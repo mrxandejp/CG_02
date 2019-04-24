@@ -181,11 +181,11 @@ Você deve ter observado que durante nosso pipeline utilizamos matrizes de dimen
 ## Resultados
 Para verificar os resultados do nosso pipeline, utilizamos uma biblioteca do professor que carrega modelos 3d, o modelo escolhido foi a cabeça de um macaco. Os valores foram lidos através de uma função e armazenados em um vetor de coordenadas, e após passar por nosso pipeline e rasterizar na tela temos o seguinte resultado:
 
-![macaco](https://user-images.githubusercontent.com/31492509/56627151-fcebb780-661a-11e9-8e01-a2cc11eb6334.png)
+![macaco2](https://user-images.githubusercontent.com/31492509/56627152-fcebb780-661a-11e9-9422-5b580cd52f34.png)
 
 Para comparar e verificar realmente o funcionamento do pipeline, fizemos a mesma rasterização do modelo 3 do macaco só que utilizando um código em OpenGL, e ambos sistemas geraram os mesmos resultados.
 
-![macaco2](https://user-images.githubusercontent.com/31492509/56627152-fcebb780-661a-11e9-9422-5b580cd52f34.png)
+![WhatsApp Image 2019-04-23 at 12 59 04](https://user-images.githubusercontent.com/31492509/56627298-92874700-661b-11e9-83ce-38a77c32da0a.jpeg)
 
 
 
