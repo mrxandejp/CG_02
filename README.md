@@ -194,12 +194,8 @@ Ficamos satisfeitos com o resultado final da atividade, é muito gratificante pe
 Algumas fontes que nos auxiliaram durante o desenvolvimento do trabalho;
 
 Fundamentals of Computer Graphics - Peter Shirley, Michael Ashikhmin, Steve Marschner
-
-https://johannesca.github.io/cg_t1/
-
-http://letslearnbits.blogspot.com/2014/10/icgt1-interpolacao-de-cores.html
-
-http://fleigfleig.blogspot.com/2016/08/interpolacao-de-cores-e-triangulos.html
+Notas de Aula do Prof. Christian
+https://en.wikipedia.org/wiki/Graphics_pipeline
 
 
 
