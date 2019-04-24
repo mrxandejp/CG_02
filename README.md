@@ -181,7 +181,7 @@ Você deve ter observado que durante nosso pipeline utilizamos matrizes de dimen
 ### Resultados
 Para verificar os resultados do nosso pipeline, utilizamos uma biblioteca do professor que carrega modelos 3d, o modelo escolhido foi a cabeça de um macaco. Os valores foram lidos através de uma função e armazenados em um vetor de coordenadas, e após passar por nosso pipeline e rasterizar na tela temos o seguinte resultado:
 
-macaco 2
+![WhatsApp Image 2019-04-23 at 23 05 18](https://user-images.githubusercontent.com/31492509/56627530-936ca880-661c-11e9-860c-59fca392af34.jpeg)
 
 Para comparar e verificar realmente o funcionamento do pipeline, fizemos a mesma rasterização do modelo 3 do macaco só que utilizando um código em OpenGL, e ambos sistemas geraram os mesmos resultados.
 
@@ -192,6 +192,7 @@ Ficamos satisfeitos com o resultado final da atividade, é muito gratificante pe
 
 ### Referências:
 Algumas fontes que nos auxiliaram durante o desenvolvimento do trabalho;
+
 Fundamentals of Computer Graphics - Peter Shirley, Michael Ashikhmin, Steve Marschner
 
 https://johannesca.github.io/cg_t1/
