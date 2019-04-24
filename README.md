@@ -141,11 +141,49 @@ A matriz que realiza esta transformação é chamada de ViewPort, e pode ser que
 		glm::vec4(0, 0, 1, 0),
 		glm::vec4((width - 1) / 2, (height - 1) / 2, 0, 1));
 ```
+A matriz viewport de fato é a combinação destas três matrizes, e podemos aplicar nos vértices, encerrando o pipeline gráfico.
+```
+	glm::mat4 viewport_matrix = s2 * t * s1;
 
+	// aplica a viewport nos vértices
+	for (unsigned int i = 0; i < objeto.size(); i++)
+	{
+		objeto[i] = round(viewport_matrix * objeto[i]);
+	}
+```
 Essas dimensões são configuráveis para cada tela, no nosso trabalho a janela possui dimensão 512x512, ou seja o valor de largura e altura eram iguais, ambos 512.
 
 figura 8
 
+## 6. Rasterização
+Esta etapa gera a rasterização dos modelos no espaço de tela, ou seja, "desenha" a cena na tela de fato. Nós já fizemos um algoritmo de rasterização na primeira etapa do trabalho, então reaproveitamos o código aqui, foi necessário apenas pegar os valores de coordenadas geradas pelo pipeline, criar um objeto vértice com tais coordenadas e rasterizar as primitivas (triângulos) na tela.
+Uma coisa importante é limpar o buffer do objeto, se não as rasterizações iriam se sobrepor.
+```
+	// limpa o buffer
+	memset(FBptr, 0, width*height * 4);
+
+	// rasteriza na tela, usando a função do primeiro trabalho
+	for (unsigned int i = 0; i < objeto.size(); i += 3) {
+
+		Vertice v1(objeto[i][0], objeto[i][1], 255, 255, 255, 255);
+		Vertice v2(objeto[i + 1][0], objeto[i + 1][1], 255, 255, 255, 255);
+		Vertice v3(objeto[i + 2][0], objeto[i + 2][1], 255, 255, 255, 255);
+
+		DrawTriangle(v1, v2, v3);
+	}
+```
+
+## Coordenadas homogêneas
+Você deve ter observado que durante nosso pipeline utilizamos matrizes de dimensão 4x4, mesmo trabalhando com objetos 3d (3x3) isso acontence pois utilizamos as chamadas coordenadas homogêneas, que nos dão diversas vantagens, por exemplo, não conseguimos representar a transformação de rotação 3d em uma matriz 3x3, pois não ficaria linear, mas se utilizarmos coordenadas homogêneas isso se torna possível, geralmente a coordenada homogênea tem valor 1, mas durante o pipeline esse valor pode ser alterado.
+
+figura ch
+
+## Resultados
+Para verificar os resultados do nosso pipeline, utilizamos uma biblioteca do professor que carrega modelos 3d, o modelo escolhido foi a cabeça de um macaco. Os valores foram lidos através de uma função e armazenados em um vetor de coordenadas, e após passar por nosso pipeline e rasterizar na tela temos o seguinte resultado:
+
+figura macaco
+
+Para comparar e verificar realmente o funcionamento do pipeline, fizemos a mesma rasterização do modelo 3 do macaco só que utilizando um código em OpenGL, e ambos sistemas geraram os mesmos resultados.
 
 
 
