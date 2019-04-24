@@ -68,11 +68,11 @@ Trecho do código que descreve a matriz de visualização:
 ## 3. Transformação: Espaço da Câmera → Espaço de Recorte
 Esta etapa do pipeline é responsável por transformar vértices do espaço da câmera para o espaço de recorte (ou projetivo). Aqui podemos adicionar a distorção perpectiva, que faz com que objetos distantes da camêra sofram uma deformação aparentando serem menores e objetos próximos à camêra aparentam ser maiores. É o efeito que simula como nosso cérebro interpreta objetos distantes, você pode observar esta distorção em rodovias onde as pontas do acostamento parecem se tocar no "infinito".
 
-figura 4
+![GO-118-trecho-Divisa-GO-DF-Campos-Belos](https://user-images.githubusercontent.com/31492509/56627143-f3624f80-661a-11e9-9f9b-98c8d22d480c.jpg)
 
 A matriz que realiza esta transformação é chamada de matriz de projeção, ou projection matrix, ela é definida a partir da distância da camêra para o plano de visualização que chamamos geralmente de "d". Aqui nossa coordenada homogênea, que vou entrar em mais detalhes a frente, provavelmente terá seu valor alterado de 1.
 
-figura 5 
+![5](https://user-images.githubusercontent.com/31492509/56627139-f3624f80-661a-11e9-8d8d-3b32ce5ac447.png)
 
 Trecho do código que descreve a matriz de projeção:
 ```
@@ -104,12 +104,12 @@ E vamos aplicar a combinação das três matrizes definidas nos passos 1, 2 e 3 
 	}
 ```
 
-figura 6
+![6](https://user-images.githubusercontent.com/31492509/56627141-f3624f80-661a-11e9-8994-30b211f12455.png)
 
 ## 5. Transformação: Espaço Canônico → Espaço de Tela"
 Por fim, vamos transformar as coordenadas no espaço canônico para o espaço da tela, já falamos sobre o espaço na tela no primeiro trabalho da disciplina, mas sabemos que ele é bidimensional, ou seja, temos apenas coordenadas x e y. 
 
-figura 7
+![7](https://user-images.githubusercontent.com/31492509/56627142-f3624f80-661a-11e9-908f-c80ea3f6b716.png)
 
 
 A matriz que realiza esta transformação é chamada de ViewPort, e pode ser quebrada em três partes.
@@ -153,7 +153,7 @@ A matriz viewport de fato é a combinação destas três matrizes, e podemos apl
 ```
 Essas dimensões são configuráveis para cada tela, no nosso trabalho a janela possui dimensão 512x512, ou seja o valor de largura e altura eram iguais, ambos 512.
 
-figura 8
+![8](https://user-images.githubusercontent.com/31492509/56627153-fd844e00-661a-11e9-9995-33a0ccadf593.png)
 
 ## 6. Rasterização
 Esta etapa gera a rasterização dos modelos no espaço de tela, ou seja, "desenha" a cena na tela de fato. Nós já fizemos um algoritmo de rasterização na primeira etapa do trabalho, então reaproveitamos o código aqui, foi necessário apenas pegar os valores de coordenadas geradas pelo pipeline, criar um objeto vértice com tais coordenadas e rasterizar as primitivas (triângulos) na tela.
@@ -176,16 +176,16 @@ Uma coisa importante é limpar o buffer do objeto, se não as rasterizações ir
 ## Coordenadas homogêneas
 Você deve ter observado que durante nosso pipeline utilizamos matrizes de dimensão 4x4, mesmo trabalhando com objetos 3d (3x3) isso acontence pois utilizamos as chamadas coordenadas homogêneas, que nos dão diversas vantagens, por exemplo, não conseguimos representar a transformação de rotação 3d em uma matriz 3x3, pois não ficaria linear, mas se utilizarmos coordenadas homogêneas isso se torna possível, geralmente a coordenada homogênea tem valor 1, mas durante o pipeline esse valor pode ser alterado.
 
-figura ch
+![ch](https://user-images.githubusercontent.com/31492509/56627154-fd844e00-661a-11e9-8b82-a252f6ff0342.png)
 
 ## Resultados
 Para verificar os resultados do nosso pipeline, utilizamos uma biblioteca do professor que carrega modelos 3d, o modelo escolhido foi a cabeça de um macaco. Os valores foram lidos através de uma função e armazenados em um vetor de coordenadas, e após passar por nosso pipeline e rasterizar na tela temos o seguinte resultado:
 
-figura macaco
+![macaco](https://user-images.githubusercontent.com/31492509/56627151-fcebb780-661a-11e9-8e01-a2cc11eb6334.png)
 
 Para comparar e verificar realmente o funcionamento do pipeline, fizemos a mesma rasterização do modelo 3 do macaco só que utilizando um código em OpenGL, e ambos sistemas geraram os mesmos resultados.
 
-
+![macaco2](https://user-images.githubusercontent.com/31492509/56627152-fcebb780-661a-11e9-9422-5b580cd52f34.png)
 
 
 
